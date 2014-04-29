@@ -34,6 +34,7 @@ PCRE_URL=ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${LIBPCRE_VE
 # APC_URL=http://pecl.php.net/get/APC-${APC_VERSION}.tgz
 
 PHALCON_REPO=git://github.com/phalcon/cphalcon.git
+PHALCON_VER=phalcon-v1.2.6
 
 ## PATH
 BASE_DIR=/app
@@ -117,9 +118,10 @@ fi
 ### Phalcon
 echo "[LOG] Downloading PhalconPHP"
 git clone $PHALCON_REPO -q
+git checkout tags/$PHALCON_VER
 if [ ! -d "$PHALCON_DIR" ]; then
   echo "[ERROR] Failed to find phalconphp directory $PHALCON_DIR"
-  exi
+  exit
 fi
 
 ## Build
